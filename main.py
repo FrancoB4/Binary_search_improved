@@ -1,27 +1,28 @@
 from functions import *
 import numpy as np
+import time
 
 
 def test():
-    n = 1000000
+    n = 100_000_000
     cont = [0] * 4
     iterations = [0] * 2
     time_counter = {'bs': 0, 'nbs': 0}
     v = np.array(sorted(set(np.random.randint(0, n*10, n))))
 
     for i in range(n):
-        serched_value = random.choice(v)
+        serched_value = np.random.choice(v)
 
-        bs_time_start = time.time()
+        bs_time_start = time.perf_counter()
         index_bs = binary_search(v, serched_value)
-        bs_time_end = time.time()
+        bs_time_end = time.perf_counter()
 
         time_counter['bs'] += bs_time_end - bs_time_start
         iterations[0] += index_bs[1]
 
-        nbs_time_start = time.time()
-        index_nbs = second_new_binary_search(v, serched_value)
-        nbs_time_end = time.time()
+        nbs_time_start = time.perf_counter()
+        index_nbs = new_binary_search(v, serched_value)
+        nbs_time_end = time.perf_counter()
 
         time_counter['nbs'] += nbs_time_end - nbs_time_start
         iterations[1] += index_nbs[1]
