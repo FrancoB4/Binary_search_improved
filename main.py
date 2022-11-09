@@ -4,7 +4,7 @@ import time
 
 
 def test():
-    n = 100_000_000
+    n = 10_000_000
     cont = [0] * 4
     iterations = [0] * 2
     time_counter = {'bs': 0, 'nbs': 0}
